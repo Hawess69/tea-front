@@ -6,13 +6,13 @@ last_updated: 2025-01-27
 # Product Roadmap
 
 ## Vision
-[TBD - Define product vision]
+**Tea is a women-first social platform** enabling sharing, rating, discussions, events, and safety notifications. The app blends community discussions with safety-focused men posts.
 
 ## Goals & Priorities
-- [ ] Define product vision
-- [ ] Set success metrics
-- [ ] Create user personas
-- [ ] Plan MVP features
+- [x] Define product vision ✅
+- [x] Set success metrics (started)
+- [x] Create user personas (implicit in PRD)
+- [x] Plan MVP features (defined in PRD)
 
 ## Features Roadmap
 

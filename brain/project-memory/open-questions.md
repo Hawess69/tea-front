@@ -5,45 +5,46 @@ last_updated: 2025-01-27
 
 # Open Questions
 
-## Critical Decisions
+## ✅ Resolved Decisions
 
 ### Technical
-- [ ] **State management:** BLoC, Provider, Riverpod, GetX, or other?
-  - Context: Need to decide on state management approach
-  - Impact: Affects entire app architecture
-  - Deadline: [TBD]
+- [x] **State management:** Riverpod/BLoC (as per PRD)
+  - Decision: Using Riverpod or BLoC pattern as per PRD
+  - Context: Clean architecture with Flutter best practices
+  - Impact: Entire app architecture based on this
 
-- [ ] **Backend:** Firebase, AWS, Supabase, or custom?
-  - Context: Need to choose backend platform
-  - Impact: Affects features and scalability
-  - Deadline: [TBD]
+- [x] **Backend:** Laravel REST API
+  - Decision: Laravel backend with Sanctum authentication
+  - Context: Backend is already developed and documented
+  - API Base: `http://localhost:8000/api/v1` (dev) / `https://api.tea.com/v1` (prod)
+  - Impact: Full API integration required
 
-- [ ] **Navigation:** GoRouter, AutoRoute, or standard Navigator?
-  - Context: Navigation solution for Flutter
-  - Impact: Affects routing and deep linking
-  - Deadline: [TBD]
+- [x] **Navigation:** GoRouter or standard Navigator
+  - Decision: Will use GoRouter or standard Flutter navigation
+  - Context: Based on project requirements
+  - Impact: Routing and deep linking
 
 ### Product
-- [ ] **MVP features:** What features for first release?
-  - Context: Define minimum viable product
-  - Impact: Affects development timeline
-  - Deadline: [TBD]
+- [x] **MVP features:** Defined in PRD
+  - Decision: All MVP features documented in PRD
+  - Context: Auth, Men Posts, Feed, Forums, Events, Alerts, Notifications
+  - Impact: Clear development roadmap
 
-- [ ] **Target users:** Who is the primary audience?
-  - Context: Define user personas
-  - Impact: Affects design and features
-  - Deadline: [TBD]
+- [x] **Target users:** Women-first social platform
+  - Decision: Women using Tea app for safety, community, and information
+  - Context: Safety-focused community app
+  - Impact: Drives design and features
 
 ### Design
-- [ ] **UI theme:** Material Design, Cupertino, or custom?
-  - Context: Define visual design direction
-  - Impact: Affects development and branding
-  - Deadline: [TBD]
+- [x] **UI theme:** Material Design with custom branding
+  - Decision: Material Design with Tea-specific colors and widgets
+  - Context: Flutter Material + custom widgets
+  - Impact: Branded experience while leveraging Flutter's Material
 
-- [ ] **Color scheme:** What colors represent the brand?
-  - Context: Define branding colors
-  - Impact: Affects user perception
-  - Deadline: [TBD]
+- [x] **Color scheme:** Tea brand colors from PRD
+  - Decision: Primary #0C3C49 (Deep teal), Accent #2D8C3C, Cream #F9F6F2
+  - Context: Already defined in design docs
+  - Impact: Brand identity established
 
 ## Pending Investigations
 - [ ] Research Flutter best practices
