@@ -1,0 +1,98 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "back": "Back",
+    "next": "Next",
+    "done": "Done"
+  },
+  "auth": {
+    "login": "Login",
+    "signup": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "confirmPassword": "Confirm Password",
+    "forgotPassword": "Forgot Password?",
+    "dontHaveAccount": "Don't have an account?",
+    "alreadyHaveAccount": "Already have an account?",
+    "agreeToTerms": "I agree to the Terms and Conditions",
+    "sendResetLink": "Send Reset Link"
+  },
+  "onboard": {
+    "skip": "Skip",
+    "next": "Next",
+    "getStarted": "Get Started",
+    "slide1": {
+      "title": "Community Feed",
+      "subtitle": "Connect with other women, share experiences, and get advice in a safe and supportive community"
+    },
+    "slide2": {
+      "title": "Safety Reviews",
+      "subtitle": "Read and share safety reviews about men to help protect yourself and other women in your community"
+    },
+    "slide3": {
+      "title": "Events & Support",
+      "subtitle": "Join local events, workshops, and support groups to build real-world connections"
+    }
+  },
+  "tabs": {
+    "home": "Home",
+    "feed": "Feed",
+    "add": "Add",
+    "forum": "Forum",
+    "events": "Events"
+  },
+  "home": {
+    "title": "Home",
+    "subtitle": "Safety Reviews",
+    "hot": "Hot",
+    "new": "New",
+    "top": "Top",
+    "comments": "comments",
+    "holdToReveal": "Hold to reveal",
+    "noPostsYet": "No posts yet",
+    "noPostsSubtitle": "Be the first to share a safety review",
+    "flagUpdated": "Flag Updated",
+    "flagRecorded": "Your flag has been recorded",
+    "loadingMore": "Loading more..."
+  },
+  "feed": {
+    "title": "Feed",
+    "subtitle": "Community Discussions",
+    "hot": "Hot",
+    "new": "New",
+    "top": "Top",
+    "comments": "comments",
+    "noPostsYet": "No posts yet",
+    "noPostsSubtitle": "Be the first to start a discussion",
+    "voteRecorded": "Vote Recorded",
+    "upvoted": "You upvoted this post",
+    "downvoted": "You downvoted this post",
+    "loadingMore": "Loading more..."
+  },
+  "forum": {
+    "title": "Forum",
+    "comingSoon": "Forum Categories Coming Soon!",
+    "comingSoonSubtitle": "Join discussions in different topics and connect with the community.",
+    "upcomingCategories": "Upcoming Categories:"
+  },
+  "events": {
+    "title": "Events",
+    "comingSoon": "Discover Local Events",
+    "comingSoonSubtitle": "Connect with the community through events, workshops, and support groups.",
+    "comingSoonFeatures": "Coming Soon:"
+  },
+  "errors": {
+    "somethingWrong": "Something went wrong",
+    "tryAgainLater": "Please try again later",
+    "failedToLoad": "Failed to load",
+    "networkError": "Network error"
+  }
+}

@@ -1,0 +1,328 @@
+---
+alwaysApply: true
+---
+Core Principle
+The /brain folder is the single source of truth for all project knowledge. Code may change, but brain remembers everything—decisions, tests, bugs, experiments, failures, and evolution. After a year away, Cursor reads brain and instantly has full context, as if never interrupted.
+
+📁 Brain Structure
+text
+/brain
+  ├── INDEX.md (auto-updated master list of all features & docs)
+  ├── /features
+  │   ├── /[feature-name]
+  │   │   ├── README.md (what, why, current status)
+  │   │   ├── journal.md (chronological work log)
+  │   │   ├── tests.md (all test cases, coverage, edge cases)
+  │   │   ├── bugs.md (active & resolved bugs, patterns)
+  │   │   └── decisions.md (key choices & rationale)
+  ├── /architecture
+  │   ├── system-overview.md
+  │   ├── tech-stack.md
+  │   ├── patterns-and-conventions.md
+  │   └── dependencies.md
+  ├── /ui-ux
+  │   ├── design-system.md
+  │   ├── user-feedback.md
+  │   ├── accessibility.md
+  │   └── /design-assets
+  │       └── /[feature-name] (screenshots, Figma exports, flows)
+  ├── /project-memory
+  │   ├── timeline.md (chronological master log with emoji markers)
+  │   ├── state-of-app.md (monthly snapshot: progress, metrics, priorities)
+  │   ├── open-questions.md (unresolved decisions & investigations)
+  │   ├── rejected-ideas.md (what we didn't do & why)
+  │   └── failed-experiments.md (dead ends preserved as lessons)
+  ├── /performance
+  │   ├── baselines.md (load times, memory, fps benchmarks)
+  │   └── optimization-log.md (improvements & regressions)
+  └── /archives
+      └── /[year] (historical context no longer immediately relevant)
+🎯 Mandatory Rules for Cursor
+1. Every Feature Gets a Brain Folder
+When starting any new feature, Cursor immediately creates /brain/features/[feature-name]/ with all five template files (README, journal, tests, bugs, decisions).
+
+2. Bidirectional Linking
+Code → Brain: Every source file has a header comment pointing to its brain doc
+
+javascript
+/**
+ * Feature: Authentication Screen
+ * Brain: /brain/features/authentication/README.md
+ * Status: Stable ✅ | Last Updated: 2025-10-24
+ */
+Brain → Code: Every brain doc links to actual source files and test files
+
+3. Nothing Exists Outside Brain
+If a decision, test, bug, or idea isn't documented in brain, it doesn't exist. Brain is not optional—it's the project's memory.
+
+4. Update Brain & Code in Same Commit
+Never commit code changes without updating relevant brain docs. Every commit must include both.
+
+5. Definition of Done Checklist
+Every task is complete only when:
+
+✅ Code written and working
+
+✅ Tests written and passing (documented in tests.md)
+
+✅ Brain docs updated (journal, decisions, tests, bugs)
+
+✅ Cross-references added between brain and code
+
+✅ Entry added to /brain/project-memory/timeline.md
+
+✅ INDEX.md auto-updated
+
+✅ Commit with descriptive message referencing brain docs
+
+6. Test Everything, Document Everything
+Every feature must have:
+
+Unit tests (component/function level)
+
+Integration tests (feature interaction)
+
+E2E tests (full user flows)
+
+Bug tests (reproduce & verify fixes)
+
+All test results recorded in /brain/features/[feature]/tests.md with:
+
+Status (pass/fail/pending)
+
+Coverage percentage
+
+Edge cases considered
+
+Untested scenarios
+
+Performance benchmarks
+
+7. Bug Tracking in Brain
+All bugs logged in /brain/features/[feature]/bugs.md:
+
+🔥 Active bugs (severity, steps to reproduce, workaround)
+
+✅ Resolved bugs (fix details, commit reference)
+
+📊 Bug patterns (recurring issues, root causes, prevention strategies)
+
+8. Re-Entry Protocol
+Before making any changes after time away (hours, days, months, years), Cursor must complete this checklist:
+
+text
+🔄 Cursor Re-Entry Checklist
+
+1. ✅ Read /brain/project-memory/timeline.md (last 3 months)
+2. ✅ Read /brain/project-memory/state-of-app.md (latest snapshot)
+3. ✅ Review /brain/project-memory/open-questions.md
+4. ✅ Check /brain/architecture/system-overview.md
+5. ✅ Review specific feature's brain folder
+6. ✅ Check /brain/INDEX.md for new features
+7. ✅ Run all existing tests to verify current state
+8. ✅ Check for dependency updates or breaking changes
+
+✅ Only after completing this may Cursor begin work.
+9. Monthly State Snapshot
+On the first commit of each month, Cursor updates /brain/project-memory/state-of-app.md with:
+
+Overall progress (X/Y features complete, %)
+
+Test coverage %
+
+Bug count by severity
+
+Performance metrics vs baselines
+
+Major changes this month
+
+Open questions
+
+Next month priorities
+
+10. Preserve All Context—Even Failures
+Rejected ideas → /brain/project-memory/rejected-ideas.md
+
+Failed experiments → /brain/project-memory/failed-experiments.md
+
+Open questions → /brain/project-memory/open-questions.md
+
+This prevents repeating past mistakes or debates.
+
+11. Use Structured Markdown + YAML Frontmatter
+Every brain doc uses YAML frontmatter for machine parsing:
+
+text
+---
+feature: authentication
+status: stable | in-progress | experimental | deprecated
+priority: critical | high | medium | low
+owner: cursor
+last_updated: 2025-10-24
+tags: [security, user-flow, mobile]
+---
+
+# Feature Name
+...
+This makes brain both human-readable and programmatically queryable.
+
+12. Emoji Markers for Quick Scanning
+Use consistent emoji in timeline and journals:
+
+🎯 New feature started
+
+✅ Feature completed
+
+🧪 Tests added/updated
+
+🐛 Bug found
+
+🔥 Critical issue
+
+🎨 UI/UX change
+
+📊 Performance improvement
+
+❓ Open question
+
+💡 New idea
+
+🗑️ Code removed/deprecated
+
+13. Cross-Reference Liberally
+Every brain doc should link to related docs. If /brain/features/authentication/decisions.md references a pattern from /brain/architecture/patterns-and-conventions.md, link it. This creates a knowledge web.
+
+14. Archive, Don't Delete
+When context becomes outdated, move it to /brain/archives/[year]/ rather than deleting. History is preserved.
+
+15. Auto-Update INDEX.md
+After every new feature or major brain update, regenerate /brain/INDEX.md with:
+
+List of all features
+
+One-line description
+
+Status
+
+Last updated date
+
+This is Cursor's entry point for quick discovery.
+
+📋 File Templates
+README.md Template
+text
+---
+feature: [feature-name]
+status: in-progress
+priority: high
+owner: cursor
+last_updated: 2025-10-24
+tags: []
+---
+
+# [Feature Name]
+
+## What
+Brief description of what this feature does.
+
+## Why
+Reasoning for building this feature.
+
+## Current Status
+- 🟢 Complete | 🟡 In Progress | 🔴 Blocked | ⚪ Not Started
+
+## Key Files
+- Source: `/src/...`
+- Tests: `/src/__tests__/...`
+
+## Dependencies
+- External libs: ...
+- Internal features: ...
+
+## Next Steps
+- [ ] Task 1
+- [ ] Task 2
+tests.md Template
+text
+---
+feature: [feature-name]
+test_coverage: 0%
+last_run: 2025-10-24
+---
+
+# Tests for [Feature Name]
+
+## Coverage Status
+- Unit Tests: 0/0 ✅
+- Integration Tests: 0/0 ✅
+- E2E Tests: 0/0 ✅
+- Accessibility: 0/0 ✅
+
+## Test Cases
+### [Test Case Name]
+- **Status:** ✅ Pass | ❌ Fail | ⚠️ Pending
+- **Description:**
+- **Expected:**
+- **Actual:**
+- **Edge Cases:**
+- **Last Run:** [Date]
+
+## Untested Scenarios
+- [ ] Scenario 1
+
+## Performance Benchmarks
+- Load time: Xms
+- Render: Xms
+- Memory: XMB
+bugs.md Template
+text
+---
+feature: [feature-name]
+active_bugs: 0
+resolved_bugs: 0
+---
+
+# Bugs for [Feature Name]
+
+## Active Bugs 🔥
+[None]
+
+### [Bug Name]
+- **Severity:** Critical | High | Medium | Low
+- **Description:**
+- **Reproduce:**
+- **Expected:**
+- **Actual:**
+- **Workaround:**
+- **Reported:** [Date]
+
+## Resolved Bugs ✅
+[None]
+
+### [Bug Name]
+- **Resolution:**
+- **Fixed In:** [Commit/PR]
+- **Resolved:** [Date]
+
+## Bug Patterns
+- Pattern: ...
+- Root cause: ...
+- Prevention: ...
+🚀 Result
+With this system, brain becomes the eternal context. Even after months of inactivity, Cursor reads brain and instantly knows:
+
+What exists and why
+
+What was tried and failed
+
+What's tested and what's not
+
+What's broken and what's fixed
+
+What's next and what's blocked
+
+The brain folder ensures perfect continuity—forever.
+
+No assumptions remain about what "might have been done." Everything is recorded, cross-referenced, and preserved.
+
+This is zero-amnesia development. 
