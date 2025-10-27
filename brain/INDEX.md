@@ -1,42 +1,46 @@
-# Tea App - Brain Index
+---
+last_updated: 2025-01-27
+project_type: flutter
+---
+
+# Brain Index
 
 ## Project Overview
-Tea is a women-first social platform built with React Native + Expo SDK 51, featuring Reddit-style community feed and private Men Posts with rating system.
+Flutter application with a structured brain folder serving as the single source of truth for all project knowledge.
 
-## Core Features
-- 🏠 **Home (Men Posts)** - Safe space to report/discuss men with blur protection
-- 📰 **Feed** - Reddit-style community discussions  
-- 💬 **Forum** - Categorized discussions (Self-Care, Work Life, etc.)
-- 🎟️ **Events** - Local and online events with RSVP
-- 🔔 **Alerts** - Track specific names and get notifications
-- 🔍 **Search** - Contextual search across all sections
+## Documentation Structure
 
-## Architecture
-- **Frontend**: React Native + Expo SDK 51, TypeScript
-- **UI**: NativeWind (Tailwind RN) + React Native Paper
-- **Backend**: Laravel REST API v1
-- **Storage**: AsyncStorage (cache)
-- **Navigation**: react-navigation (Tabs + Stack)
-- **i18n**: react-i18next (English/Arabic, RTL-ready)
+### Core Documentation
+- [Product Documentation](/brain/product/) - Product roadmap, user research, and metrics
+- [Architecture](/brain/architecture/) - System design, tech stack, and patterns
+- [Design](/brain/design/) - Design system, accessibility, and user flows
+- [Engineering](/brain/engineering/) - Coding standards, best practices, and benchmarks
+- [QA](/brain/qa/) - Testing strategy, coverage reports, and bug tracking
+- [Security](/brain/security/) - Threat models, security policies, and vulnerabilities
+- [Operations](/brain/operations/) - Deployment, monitoring, and incident response
 
-## Brain Structure
-- `/features/` - Individual feature documentation
-- `/architecture/` - System design and patterns
-- `/ui-ux/` - Design system and user experience
-- `/project-memory/` - Timeline, state, and decisions
-- `/performance/` - Benchmarks and optimization
-- `/archives/` - Historical context
+### Features
+- None yet (will be added as features are developed)
 
-## Features Status
-- ✅ **Completed**: Worklets Fix - Resolved version mismatch error
-- 🟡 **In Progress**: Brain folder setup
-- ⚪ **Not Started**: Core app development
-- ⚪ **Not Started**: Feature implementation
+### Project Memory
+- [Timeline](/brain/project-memory/timeline.md) - Chronological master log
+- [State of Project](/brain/project-memory/state-of-project.md) - Current snapshot
+- [Open Questions](/brain/project-memory/open-questions.md) - Unresolved investigations
+- [Rejected Ideas](/brain/project-memory/rejected-ideas.md) - What we didn't do & why
+- [Trade-offs Log](/brain/project-memory/trade-offs-log.md) - Decisions and sacrifices
 
-## Recent Fixes
-- **Worklets Version Mismatch** (2025-01-27) - Fixed critical app launch error
+### Retrospectives
+- (Monthly retrospectives will be added here)
 
-## Last Updated
-2025-01-27
+---
 
+## Quick Navigation
+- 📋 [Product Roadmap](/brain/product/roadmap.md)
+- 🏗️ [System Overview](/brain/architecture/system-overview.md)
+- 🎨 [Design System](/brain/design/design-system.md)
+- 📊 [Current State](/brain/project-memory/state-of-project.md)
+- 🗓️ [Timeline](/brain/project-memory/timeline.md)
 
+---
+
+*This index is auto-updated as features and documentation are added.*

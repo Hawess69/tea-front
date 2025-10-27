@@ -1,47 +1,62 @@
-# Tea App - Open Questions
+---
+section: project-memory
+last_updated: 2025-01-27
+---
 
-## Backend Integration
-- [ ] **API Endpoints**: Are all Laravel API endpoints documented and available?
-- [ ] **Authentication**: Laravel Sanctum configuration and token format?
-- [ ] **Push Notifications**: Backend push notification service setup?
-- [ ] **Image Processing**: Server-side image processing capabilities?
-- [ ] **Content Moderation**: Automated moderation tools and admin panel?
+# Open Questions
 
-## Technical Implementation
-- [ ] **Expo SDK 51**: Any specific configuration requirements?
-- [ ] **RTL Support**: Arabic language testing and validation?
-- [ ] **Offline Sync**: Conflict resolution strategy for offline data?
-- [ ] **Performance**: Specific performance requirements and benchmarks?
-- [ ] **Security**: Additional security measures beyond token auth?
+## Critical Decisions
 
-## User Experience
-- [ ] **Onboarding**: Detailed user onboarding flow and screens?
-- [ ] **Content Guidelines**: Community guidelines and moderation rules?
-- [ ] **Accessibility**: Specific accessibility requirements and testing?
-- [ ] **User Feedback**: Feedback collection and improvement process?
+### Technical
+- [ ] **State management:** BLoC, Provider, Riverpod, GetX, or other?
+  - Context: Need to decide on state management approach
+  - Impact: Affects entire app architecture
+  - Deadline: [TBD]
 
-## Business Requirements
-- [ ] **Launch Timeline**: Specific launch date and milestones?
-- [ ] **User Testing**: User testing schedule and feedback integration?
-- [ ] **Analytics**: Analytics requirements and tracking needs?
-- [ ] **Legal**: Privacy policy, terms of service, and legal requirements?
+- [ ] **Backend:** Firebase, AWS, Supabase, or custom?
+  - Context: Need to choose backend platform
+  - Impact: Affects features and scalability
+  - Deadline: [TBD]
 
-## Development Process
-- [ ] **Code Review**: Code review process and standards?
-- [ ] **Testing**: Testing strategy and coverage requirements?
-- [ ] **Deployment**: Deployment process and environment setup?
-- [ ] **Monitoring**: Error tracking and performance monitoring?
+- [ ] **Navigation:** GoRouter, AutoRoute, or standard Navigator?
+  - Context: Navigation solution for Flutter
+  - Impact: Affects routing and deep linking
+  - Deadline: [TBD]
 
-## Design & Content
-- [ ] **Design System**: Complete design system and component library?
-- [ ] **Content**: Initial content and seed data for testing?
-- [ ] **Localization**: Arabic translation requirements and process?
-- [ ] **Branding**: Brand guidelines and asset requirements?
+### Product
+- [ ] **MVP features:** What features for first release?
+  - Context: Define minimum viable product
+  - Impact: Affects development timeline
+  - Deadline: [TBD]
 
-## Future Considerations
-- [ ] **Scalability**: Expected user growth and scaling requirements?
-- [ ] **Features**: Additional features planned for future releases?
-- [ ] **Platforms**: Web version or additional platform support?
-- [ ] **Integrations**: Third-party service integrations needed?
+- [ ] **Target users:** Who is the primary audience?
+  - Context: Define user personas
+  - Impact: Affects design and features
+  - Deadline: [TBD]
 
+### Design
+- [ ] **UI theme:** Material Design, Cupertino, or custom?
+  - Context: Define visual design direction
+  - Impact: Affects development and branding
+  - Deadline: [TBD]
+
+- [ ] **Color scheme:** What colors represent the brand?
+  - Context: Define branding colors
+  - Impact: Affects user perception
+  - Deadline: [TBD]
+
+## Pending Investigations
+- [ ] Research Flutter best practices
+- [ ] Investigate performance optimization techniques
+- [ ] Evaluate testing frameworks
+- [ ] Review accessibility guidelines for Flutter
+
+## Blocking Issues
+None currently
+
+## How to Use
+1. Add new questions as they arise
+2. Mark as "resolved" when answered
+3. Move to decisions-log.md when decided
+4. Update status regularly
 

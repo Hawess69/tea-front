@@ -1,21 +1,21 @@
-Tea App — Mobile (React Native + Expo) PRD
+Here's the updated PRD for the Tea App, adapted from React Native + Expo to Flutter, maintaining all features and architecture considerations:
 
-Platform: React Native + Expo SDK 51
+Tea App — Mobile (Flutter)
+Platform: Flutter (Dart)
 Platforms: iOS + Android
-Language: TypeScript
+Language: Dart
 Backend: Laravel REST API (v1)
-Storage: AsyncStorage (cache)
-UI Library: NativeWind (Tailwind RN) + React Native Paper
-Notifications: Expo Notifications
-Goal: Build the MVP of the Tea app — a safe social space for women to share experiences, rate interactions, discuss freely, and attend events.
+Storage: Hive/SharedPreferences (cache)
+UI Library: Flutter Material & Custom Widgets, with packages like flutter_bloc/riverpod, flutter_localizations
+Notifications: Firebase Cloud Messaging + flutter_local_notifications
+Goal: Build the MVP of the Tea app — a women-first social space enabling sharing, rating, discussions, events, and notifications.
 
 🎯 Product Vision
+Tea is a women-first social platform blending two core experiences:
 
-Tea is a women-first social platform that blends two main experiences:
+🧠 Feed (Reddit-style posts): Women post discussions, advice, topics, upvote/downvote, comment.
 
-🧠 Feed (Reddit-style posts) — women post general discussions, advice, and topics that others can upvote/downvote and comment on.
-
-🚩 Men Posts — a safe, private section where women can post about men (photo, story, tags) and the community rates them (red/green/neutral).
+🚩 Men Posts: Private section for women to post about men (photo, story, tags), community rates (red/green/neutral).
 
 Additional features:
 
@@ -25,379 +25,226 @@ Alerts for tracked names
 
 Local push notifications
 
-Fully bilingual (English/Arabic) and RTL-ready.
+Fully bilingual (English/Arabic) and RTL-ready
 
 🧭 App Navigation Structure
+Bottom Navigation Bar (5 tabs):
 
-Bottom Tabs (5):
+🏠 Home (Men Posts): Ratings, blur protection
 
-🏠 Home (Men Posts) — red/green/neutral ratings
+📰 Feed: Community posts
 
-📰 Feed — Reddit-style community feed
+➕ Add Button (Floating): Quick actions like post a man, create feed post, set alert, create event
 
-➕ Add Button (Floating) → Action sheet for quick actions
+💬 Forum: Discussion categories
 
-Post a Man
+🎟️ Events: Local and online events
 
-Create Feed Post
+Top App Bar:
 
-Set Alert
+Left: Profile avatar (settings/profile)
 
-Create Event (if mod)
+Right: Chat 💬 + Notification Bell 🔔
 
-💬 Forum — categories like “Self-Care”, “Work Life”, etc.
-
-🎟️ Events — discover local and online events
-
-Top App Bar (global):
-
-Left → Profile avatar (opens settings/profile page)
-
-Right → Chat 💬 + Notification Bell 🔔
-
-Below → Contextual Search Bar (filters posts/events/forums)
+Below: Contextual search bar with filters
 
 💡 Core Features
 1️⃣ Authentication
+Email/password or phone login (Laravel API)
 
-Basic email/password or phone login (via Laravel API)
-
-Remember session via AsyncStorage
+Persist sessions (Hive/SharedPreferences)
 
 Screens: Onboarding → Login → Register → Home
 
 2️⃣ Home — Men Posts Feed
+Purpose: Safe reporting/discussion with blur protection
 
-Purpose: Safe space to report or discuss men with blur protection.
+UI:
 
-UI Components
+Card list layout
 
-Card layout (single column list)
+Blurred photos (hold-to-reveal)
 
-Blurred photo (hold-to-reveal)
+Full name + city + tags chips
 
-Full name + city + tags chips (e.g., Gym, Instagram)
-
-Caption/Story preview (2–3 lines)
+Caption/story snippet
 
 Inline Flag Bar (🚩 ✅ ⚪)
 
-Tap to vote (optimistic update)
-
-Changes color when selected
+Voting with optimistic updates
 
 Comments count
 
-Overflow menu (Share / Report / “Set Alert for this name”)
+Overflow menu (Share, Report, Set Alert)
 
-Top bar filters: Hot | New | Top (Red)
+API:
 
-Floating “+” for quick Post
+GET /api/v1/men/posts
 
-Data:
+POST /api/v1/men/posts/:id/flag
 
-/api/v1/men/posts → GET all posts
+GET/POST /api/v1/men/posts/:id/comments
 
-/api/v1/men/posts/:id/flag → POST flag
+Sorting Logic:
 
-/api/v1/men/posts/:id/comments → GET/POST comments
-
-Sorting Logic (frontend):
-
-Hot = (red + 0.5*neutral - 0.2*green) / (1+hours)^1.3
-
-New = timestamp descending
-
-Top = red count descending
+Hot, New, Top as per specifications
 
 3️⃣ Post a Man (Composer)
+Upload photo (using image_picker with auto blur, EXIF removal, watermark)
 
-Steps:
+Enter name, city, tags
 
-Upload photo (Expo ImagePicker → auto blur → EXIF strip → watermark)
+Caption (warn if phone/email detected)
 
-Enter full name (first + last)
+Flag choice
 
-City + tags (multi-select chips)
+Submit to API
 
-Caption (min 20 chars; warn if phone/email detected)
-
-Choose flag (Red / Green / Neutral)
-
-Submit → POST /api/v1/men/posts
-
-Prompt: “Set alert for [name]?” → POST /api/v1/alerts
+Set Alert prompt
 
 4️⃣ Men Post Details
+Full gallery (hold-to-reveal)
 
-Full blurred image gallery (hold-to-reveal)
-
-Full name + city + tags
+Name, city, tags
 
 Full caption/story
 
-Inline flag bar
+Flag info & counts
 
-Flag summary (red/green/neutral counts)
+Comments section (scrollable, add comment)
 
-Comments section (scrollable)
+Overflow menu
 
-List of comments
+5️⃣ Feed (Community)
+Reddit-style posts
 
-Add comment input (POST /api/v1/men/posts/:id/comments)
+Features:
 
-Overflow menu: Share / Report / Set Alert
+Author, avatar
 
-5️⃣ Feed (Community Section)
+Title, truncated body
 
-Purpose: Reddit-style forum for general discussion.
-
-Feed Post Card
-
-Author name & avatar
-
-Title + body (truncated)
-
-Upvote / Downvote buttons with count
+Upvote/downvote with count
 
 Comments count
 
-Time since posted
+Post time
 
-Optional image preview
+Optional image
 
-Data:
+API:
 
-/api/v1/feed/posts → GET/POST
+GET/POST /api/v1/feed/posts
 
-/api/v1/feed/posts/:id/vote → POST vote
-
-/api/v1/feed/posts/:id/comments → GET/POST
-
-Sorting: Hot, New, Top (based on vote ratio)
+Vote, comment, sort
 
 6️⃣ Forum
+List categories
 
-List of categories (/api/v1/forums)
+Topic lists with comments & votes
 
-Each opens topic list (with title, body, comment count)
-
-Users can comment, upvote/downvote inside
-
-Similar UI to Feed but grouped by topic
+UI similar to feed, grouped by topics
 
 7️⃣ Events
+List upcoming events
 
-Upcoming events list (/api/v1/events)
+RSVP toggle (local)
 
-Card with title, image, date/time, and location
-
-“RSVP” button toggles local saved state
-
-Schedule local notification 30 minutes before (expo-notifications)
+Schedule local notifications (30 mins before)
 
 8️⃣ Alerts System
+Add alerts for specific names
 
-Users add alert for specific names (/api/v1/alerts)
+Store locally & backend
 
-Stored locally and on backend
-
-When new MenPost matches name → backend sends Expo push
-
-List of active alerts (Profile → “My Alerts”)
+Notify when matches occur
 
 9️⃣ Notifications
+Fetch: /api/v1/notifications
 
-Pull from /api/v1/notifications
+Local notifications for comments, alerts, events
 
-Local notifications via expo-notifications
-
-Bell icon badge count
-
-Handles:
-
-New comments
-
-New alert matches
-
-Event reminders
-
-Admin broadcasts
+Badge count update
 
 🔟 Search Bar
+Context-aware filtering with debounce
 
-Contextual search per page:
-
-Section	Filters by
-Home (Men)	Name, city, tags
-Feed	Post title/body
-Forum	Topic titles
-Events	Title/location
-
-All use debounced local filtering (React Query cache).
+Filters per page (name, city, tags, titles, location)
 
 ⚙️ System Architecture (Frontend)
+Main Stack:
 
-Main Stack
+Flutter (latest stable, SDK 3+)
 
-React Native + Expo SDK 51
+State Management: Riverpod / Bloc
 
-TypeScript
+API: Dio / http
 
-React Query (API + cache)
+Caching: Hive / shared_preferences
 
-Axios (API client)
+Localization: flutter_localizations + intl or easy_localization
 
-AsyncStorage (persistent cache)
+Navigation: go_router or flutter_navigation
 
-Expo ImagePicker / BlurView
+UI: Material + custom Widgets, RTL support built-in
 
-Expo Notifications
+Folder Structure:
 
-react-navigation (Tabs + Stack)
+text
+/lib
+  /core           // constants, themes, utilities
+  /data           // API clients, models, repositories
+  /domain         // business logic, use cases
+  /presentation   // Screens, widgets, state management (bloc, riverpod)
+    /screens
+      /auth
+      /home
+      /feed
+      /forum
+      /events
+      /profile
+    /widgets
+    /localization
+  main.dart
+🎨 UI & Theme
+Colors: Same palette (#0C3C49, #2D8C3C, neutrals)
 
-react-i18next (localization)
+Typography: Nunito / Inter via Google Fonts
 
-NativeWind (Tailwind RN)
+RTL: Handle with Directionality widget and adapt layouts accordingly
 
-Folder Structure
+Accessibility: Font scaling, semantic labels
 
-src/
- ├── api/
- │    ├── ApiClient.ts
- │    ├── endpoints/
- ├── components/
- ├── hooks/
- ├── navigation/
- ├── screens/
- │    ├── Home/
- │    ├── Feed/
- │    ├── Forum/
- │    ├── Events/
- │    ├── Auth/
- │    ├── Profile/
- ├── store/
- ├── utils/
- ├── locales/
- │    ├── en.json
- │    ├── ar.json
+🔌 Backend & API
+Endpoints similar (/api/v1/...)
 
-🧩 UI Design Rules
+Token auth via Laravel Sanctum
 
-Color Palette:
+JSON structure consistent
 
-Deep Teal #0C3C49
+Error handling: HTTP 4xx/5xx with message
 
-Accent Green #2D8C3C
+🔔 Notifications
+Register Expo Firebase token with backend (/api/v1/users/token)
 
-Background: Off-white / beige neutrals
+Push notifications via Firebase Cloud Messaging and flutter_local_notifications
 
-Typography:
+Local notifications for reminders
 
-Rounded, readable sans-serif (Nunito / Inter)
+⚡ Offline & Offline Cache
+Feed, Men Posts cached locally (Hive)
 
-Mood: Warm, safe, supportive
+Queue posts/comments if offline, sync on reconnect
 
-RTL Support:
-
-Use I18nManager.isRTL for direction
-
-Layouts flip seamlessly for Arabic
-
-Accessibility:
-
-Font scaling supported
-
-Alt text for images
-
-🧰 Integration Expectations (Backend → Frontend)
-
-All endpoints under /api/v1/
-
-Token-based auth via Laravel Sanctum
-
-JSON structure:
-
-{
-  "status": true,
-  "data": [...],
-  "message": "Success"
-}
-
-
-Errors return HTTP 4xx/5xx with message key.
-
-🧱 Notifications Integration
-
-Each user registers Expo Push Token (POST /api/v1/users/token)
-
-Laravel queue sends Expo push via saved token
-
-Local notifications handled with expo-notifications
-
-🔄 Offline Behavior
-
-Cache feed & men posts locally
-
-Allow reading offline
-
-Queue comment/posts until reconnect (React Query retry)
-
-🧮 Analytics (optional phase)
-
-Track screen visits (Segment/Amplitude optional)
-
-Track post creation rate, flag usage, events joined
-
-✅ Acceptance Criteria (MVP)
-Area	Must Have
-Auth	Login / Register / Persist Session
-Home	View, create, flag, comment on Men posts
-Feed	Create post, vote, comment, sort
-Alerts	Add / remove alerts, receive notifications
-Events	List & RSVP + reminders
-Notifications	Working Expo push & local
-Search	Contextual, responsive, per tab
-RTL	Verified Arabic layout & strings
-Offline	Cache posts for reading
-Performance	60 fps on mid-range Android
-Release	Runs on Expo Go + Play Store + App Store
-🧭 MVP Milestones
+🚩 MVP Milestones
 Phase	Focus	Deliverables
-1. Auth + Navigation	Core structure	Auth, Tabs, Search, Theme
-2. Men Posts	Main feature	Feed, Flags, Comments
-3. Feed (Reddit)	Community	Posts, Votes, Comments
-4. Alerts + Notifications	Engagement	Alerts, Expo push
-5. Forum + Events	Add-ons	Event cards, RSVP
-6. Polish & RTL	QA phase	Arabic layout, bug fixes
-7. Publish	Final	EAS build + App Store/Play upload
-🧠 Development Tools
+1	Auth + Navigation	Core structure, login, registration, theme, RTL
+2	Men Posts	Feed, flags, comments
+3	Community Feed	Posts, votes, comments
+4	Alerts & Notifications	Alerts, push(FCM), local notifications
+5	Forum & Events	Categories, RSVP, reminders
+6	Polish & RTL	QA, bug fix, full Arabic layout
+7	Release	Build APK/IPA, publish
+✅ End Goal
+A polished, production-ready Flutter app diverse in features, highly performant, with offline support, i18n, RTL, and backend integration, matching initial MVP specs for the Tea App.
 
-IDE: Cursor / VS Code
-
-Version Control: GitHub
-
-Project Management: Notion / Trello
-
-Testing: Expo Go (mobile) + Jest (unit tests)
-
-🧩 Deliverables
-
-Complete Expo project folder (ready for EAS build)
-
-Working integration with Laravel endpoints
-
-i18n-ready with en.json + ar.json
-
-Documentation:
-
-Setup & run instructions
-
-.env config (API URL, Expo key)
-
-Preview build (EAS link or APK)
-
-Unit-tested core features (Feed, Men Posts)
-
-✅ End Result
-A production-quality Expo mobile app (Tea MVP) integrated with your Laravel backend — featuring both the Reddit-like Feed and the private Men Posts, complete with voting, commenting, alerts, events, notifications, and RTL/i18n.
