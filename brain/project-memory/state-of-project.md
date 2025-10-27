@@ -15,10 +15,13 @@ project_phase: initialization
 - **Status:** 🟢 On Track
 
 ### Technical Status
-- **Framework:** Flutter
-- **Architecture:** [TBD]
-- **State Management:** [TBD]
-- **Backend:** [TBD]
+- **Framework:** Flutter (latest stable, SDK 3+)
+- **Architecture:** Clean Architecture (Data → Domain → Presentation)
+- **State Management:** Riverpod or BLoC (decision pending)
+- **Backend:** Laravel REST API with Sanctum ✅
+- **Storage:** Hive / SharedPreferences
+- **Localization:** flutter_localizations + intl
+- **Navigation:** GoRouter or standard Navigator
 
 ### Test Coverage
 - **Overall:** 0%
@@ -41,10 +44,10 @@ project_phase: initialization
 - ✅ Documentation framework established
 - ✅ Switched to Flutter
 
-## Open Questions
-- [ ] State management solution?
-- [ ] Backend platform?
-- [ ] UI theme and design direction?
+## Open Questions ✅ Resolved
+- [x] Backend platform? → Laravel REST API
+- [x] UI theme and design direction? → Material Design with Tea branding
+- [ ] State management solution? → Evaluating Riverpod vs BLoC
 
 ## Next Month Priorities
 1. Define product vision and features

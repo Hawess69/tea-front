@@ -2,103 +2,109 @@
 alwaysApply: true
 ---
 
-  You are an expert in TypeScript, React Native, Expo, and Mobile UI development.
+You are an expert in Dart, Flutter, and Mobile UI development.
 
-  Code Style and Structure
-  - Write concise, technical TypeScript code with accurate examples.
-  - Use functional and declarative programming patterns; avoid classes.
-  - Prefer iteration and modularization over code duplication.
-  - Use descriptive variable names with auxiliary verbs (e.g., isLoading, hasError).
-  - Structure files: exported component, subcomponents, helpers, static content, types.
-  - Follow Expo's official documentation for setting up and configuring your projects: https://docs.expo.dev/
+Code Style and Structure
+- Write concise, technical Dart code with accurate examples.
+- Use functional and declarative programming patterns where appropriate.
+- Prefer composition over inheritance.
+- Use descriptive variable names with auxiliary verbs (e.g., isLoading, hasError).
+- Structure files: exported widget, subwidgets, helpers, static content, types.
+- Follow Flutter's official documentation for setting up and configuring your projects: https://docs.flutter.dev/
 
-  Naming Conventions
-  - Use lowercase with dashes for directories (e.g., components/auth-wizard).
-  - Favor named exports for components.
+Naming Conventions
+- Use snake_case for directory names (e.g., screens/auth_wizard).
+- Use PascalCase for classes and widgets.
+- Use camelCase for variables, functions, and methods.
+- Favor named parameters for better readability.
 
-  TypeScript Usage
-  - Use TypeScript for all code; prefer interfaces over types.
-  - Avoid enums; use maps instead.
-  - Use functional components with TypeScript interfaces.
-  - Use strict mode in TypeScript for better type safety.
+Dart Usage
+- Use Dart for all code; prefer classes and interfaces.
+- Use enum classes for type-safe enumerations.
+- Use const constructors for immutable widgets.
+- Use strict mode in Dart analysis_options.yaml for better type safety.
 
-  Syntax and Formatting
-  - Use the "function" keyword for pure functions.
-  - Avoid unnecessary curly braces in conditionals; use concise syntax for simple statements.
-  - Use declarative JSX.
-  - Use Prettier for consistent code formatting.
+Syntax and Formatting
+- Use arrow syntax (=>) for simple functions and methods.
+- Prefer expression bodies for one-line getters and setters.
+- Use trailing commas for better formatting and diffs.
+- Use Dart formatter for consistent code formatting.
 
-  UI and Styling
-  - Use Expo's built-in components for common UI patterns and layouts.
-  - Implement responsive design with Flexbox and Expo's useWindowDimensions for screen size adjustments.
-  - Use styled-components or Tailwind CSS for component styling.
-  - Implement dark mode support using Expo's useColorScheme.
-  - Ensure high accessibility (a11y) standards using ARIA roles and native accessibility props.
-  - Leverage react-native-reanimated and react-native-gesture-handler for performant animations and gestures.
+UI and Styling
+- Use Flutter's built-in widgets for common UI patterns and layouts.
+- Implement responsive design using LayoutBuilder or MediaQuery for screen size adjustments.
+- Use Theme.of(context) for consistent styling across the app.
+- Implement dark mode support using ThemeData.dark() and Brightness.
+- Ensure high accessibility (a11y) standards using Semantics widgets and accessibility properties.
+- Leverage Flutter's animation framework (AnimatedWidget, AnimationController) for performant animations and gestures.
 
-  Safe Area Management
-  - Use SafeAreaProvider from react-native-safe-area-context to manage safe areas globally in your app.
-  - Wrap top-level components with SafeAreaView to handle notches, status bars, and other screen insets on both iOS and Android.
-  - Use SafeAreaScrollView for scrollable content to ensure it respects safe area boundaries.
-  - Avoid hardcoding padding or margins for safe areas; rely on SafeAreaView and context hooks.
+Safe Area Management
+- Use SafeArea widget to automatically avoid system intrusions (notches, status bars, etc.).
+- Wrap screens and content with SafeArea to handle insets on both iOS and Android.
+- Avoid hardcoding padding or margins for safe areas; rely on SafeArea widget.
+- Use EdgeInsets.symmetric or EdgeInsets.only for consistent spacing.
 
-  Performance Optimization
-  - Minimize the use of useState and useEffect; prefer context and reducers for state management.
-  - Use Expo's AppLoading and SplashScreen for optimized app startup experience.
-  - Optimize images: use WebP format where supported, include size data, implement lazy loading with expo-image.
-  - Implement code splitting and lazy loading for non-critical components with React's Suspense and dynamic imports.
-  - Profile and monitor performance using React Native's built-in tools and Expo's debugging features.
-  - Avoid unnecessary re-renders by memoizing components and using useMemo and useCallback hooks appropriately.
+Performance Optimization
+- Use const widgets where possible to optimize rebuilds.
+- Implement list view optimizations (e.g., ListView.builder, ListView.separated).
+- Use RepaintBoundary to isolate expensive widgets.
+- Optimize images: use WebP format where supported, include size data, implement caching with cached_network_image package.
+- Profile and monitor performance using Flutter DevTools and performance overlay.
+- Avoid unnecessary rebuilds by using const constructors and optimizing widget trees.
 
-  Navigation
-  - Use react-navigation for routing and navigation; follow its best practices for stack, tab, and drawer navigators.
-  - Leverage deep linking and universal links for better user engagement and navigation flow.
-  - Use dynamic routes with expo-router for better navigation handling.
+Navigation
+- Use GoRouter or auto_route for routing and navigation with type-safe routes.
+- Leverage deep linking and universal links for better user engagement and navigation flow.
+- Implement proper navigation guards and route guards for authentication.
+- Use named routes for better navigation handling.
 
-  State Management
-  - Use React Context and useReducer for managing global state.
-  - Leverage react-query for data fetching and caching; avoid excessive API calls.
-  - For complex state management, consider using Zustand or Redux Toolkit.
-  - Handle URL search parameters using libraries like expo-linking.
+State Management
+- Use Riverpod for managing global state with type-safe providers.
+- Leverage AsyncValue for data fetching and caching to avoid excessive API calls.
+- For complex state management, consider using Riverpod's family, autoDispose, and other features.
+- Handle URL parameters using GoRouter's path parameters and query parameters.
 
-  Error Handling and Validation
-  - Use Zod for runtime validation and error handling.
-  - Implement proper error logging using Sentry or a similar service.
-  - Prioritize error handling and edge cases:
-    - Handle errors at the beginning of functions.
-    - Use early returns for error conditions to avoid deeply nested if statements.
-    - Avoid unnecessary else statements; use if-return pattern instead.
-    - Implement global error boundaries to catch and handle unexpected errors.
-  - Use expo-error-reporter for logging and reporting errors in production.
+Error Handling and Validation
+- Use Dart's built-in exception handling with try-catch blocks.
+- Use packages like equatable or freezed for data validation.
+- Implement proper error logging using Firebase Crashlytics or Sentry.
+- Prioritize error handling and edge cases:
+  - Handle errors at the beginning of functions.
+  - Use early returns for error conditions to avoid deeply nested if statements.
+  - Avoid unnecessary else statements; use if-return pattern instead.
+  - Implement global error handlers to catch and handle unexpected errors.
+- Use SelectableText.rich for displaying errors with red color for visibility.
 
-  Testing
-  - Write unit tests using Jest and React Native Testing Library.
-  - Implement integration tests for critical user flows using Detox.
-  - Use Expo's testing tools for running tests in different environments.
-  - Consider snapshot testing for components to ensure UI consistency.
+Testing
+- Write unit tests using Dart's built-in test package.
+- Implement widget tests using Flutter Testing Library.
+- Use integration tests for critical user flows using integration_test package.
+- Use golden tests (snapshot testing) for widgets to ensure UI consistency.
 
-  Security
-  - Sanitize user inputs to prevent XSS attacks.
-  - Use react-native-encrypted-storage for secure storage of sensitive data.
-  - Ensure secure communication with APIs using HTTPS and proper authentication.
-  - Use Expo's Security guidelines to protect your app: https://docs.expo.dev/guides/security/
+Security
+- Sanitize user inputs to prevent XSS attacks.
+- Use flutter_secure_storage for secure storage of sensitive data.
+- Ensure secure communication with APIs using HTTPS and proper authentication.
+- Use Flutter's Security best practices: https://docs.flutter.dev/security/
 
-  Internationalization (i18n)
-  - Use react-native-i18n or expo-localization for internationalization and localization.
-  - Support multiple languages and RTL layouts.
-  - Ensure text scaling and font adjustments for accessibility.
+Internationalization (i18n)
+- Use Flutter's built-in intl package for internationalization and localization.
+- Use l10n.yaml and ARB files for managing translations.
+- Support multiple languages and RTL layouts using TextDirection.
+- Ensure text scaling and font adjustments for accessibility.
 
-  Key Conventions
-  1. Rely on Expo's managed workflow for streamlined development and deployment.
-  2. Prioritize Mobile Web Vitals (Load Time, Jank, and Responsiveness).
-  3. Use expo-constants for managing environment variables and configuration.
-  4. Use expo-permissions to handle device permissions gracefully.
-  5. Implement expo-updates for over-the-air (OTA) updates.
-  6. Follow Expo's best practices for app deployment and publishing: https://docs.expo.dev/distribution/introduction/
-  7. Ensure compatibility with iOS and Android by testing extensively on both platforms.
+Key Conventions
+1. Follow Flutter's architecture best practices (BLoC, Riverpod, or Provider pattern).
+2. Prioritize Flutter performance metrics (frame rendering, memory usage, build times).
+3. Use environment variables for managing configuration across different environments.
+4. Use permission_handler for handling device permissions gracefully.
+5. Follow Flutter's best practices for app deployment and publishing: https://docs.flutter.dev/deployment/
+6. Ensure compatibility with iOS and Android by testing extensively on both platforms.
+7. Use build_runner for code generation when using annotations (freezed, json_serializable, etc.).
 
-  API Documentation
-  - Use Expo's official documentation for setting up and configuring your projects: https://docs.expo.dev/
+API Documentation
+- Use Flutter's official documentation for setting up and configuring your projects: https://docs.flutter.dev/
+- Reference Flutter's widget catalog for UI components: https://docs.flutter.dev/ui/widgets
 
-  Refer to Expo's documentation for detailed information on Views, Blueprints, and Extensions for best practices.
+Refer to Flutter's documentation for detailed information on Widgets, State Management, and Best Practices.
     
