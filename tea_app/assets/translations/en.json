@@ -1,0 +1,15 @@
+{
+  "app_name": "Tea",
+  "welcome": "Welcome to Tea",
+  "login": "Login",
+  "register": "Register",
+  "email": "Email",
+  "password": "Password",
+  "name": "Name",
+  "loading": "Loading...",
+  "error": "Error",
+  "retry": "Retry"
+}
+
+
+
